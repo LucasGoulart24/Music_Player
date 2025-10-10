@@ -8,6 +8,7 @@
     <title>Music Player</title>
 </head>
 <body>
+    <audio id="audio"></audio>
     <div class="Card">
         <img src="./Img/Capa_da_musica.jpeg" alt="Capa" id="capa">
         <div class="Barra">
@@ -16,7 +17,7 @@
         </div>
         <div class="Botoes">
             <button onclick="backMusic()"><i class='bx bx-chevron-left'></i></button>
-            <button onclick="PlayerMusic()"><i class='bx bxs-right-arrow'></i></button>
+            <button onclick="PlayerMusic()" id="playPauseBtn"><i class='bx bxs-right-arrow' id="playPauseIcon"></i></button>
             <button onclick="nextMusic()"><i class='bx bx-chevron-right'></i></button>
         </div>
     </div>
