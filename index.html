@@ -3,17 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="./Style/style.css">
     <title>Music Player</title>
 </head>
 <body>
     <div class="Card">
-        <img src="" alt="Capa">
+        <img src="./Img/Capa_da_musica.jpeg" alt="Capa" id="capa">
         <div class="Barra">
-            <h1>Titulo</h1>
-            <p>Banda</p>
+            <h1 id="titulo">Titulo</h1>
+            <p id="autor">Banda</p>
         </div>
-        <button>Player</button>
+        <div class="Botoes">
+            <button onclick="backMusic()"><i class='bx bx-chevron-left'></i></button>
+            <button onclick="PlayerMusic()"><i class='bx bxs-right-arrow'></i></button>
+            <button onclick="nextMusic()"><i class='bx bx-chevron-right'></i></button>
+        </div>
     </div>
+    <script src="./script.js"></script>
 </body>
 </html>
