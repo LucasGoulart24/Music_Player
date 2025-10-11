@@ -11,7 +11,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #EEE;
+  background: linear-gradient(to top, #f89b29, #ff0f7b);
 }
 
 .Card {
@@ -20,7 +20,7 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  border-radius: 5px;
+  border-radius: 10px;
   background-color: #FFF;
   box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.2);
 }
@@ -39,13 +39,31 @@ body {
   padding: 5px;
 }
 .Barra h1 {
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   font-weight: 400;
   margin-bottom: 5px;
 }
 .Barra p {
   font-size: 1rem;
   margin-bottom: 5px;
+  color: #282828;
+}
+
+.Barrinha {
+  width: 90%;
+  height: 7px;
+  margin: 10px;
+  border-radius: 50px;
+  cursor: pointer;
+  background-color: #d1d1d1;
+}
+
+.Progresso {
+  width: 0;
+  height: 100%;
+  background-color: #ff6000;
+  border-radius: 4px;
+  transition: width 0.2s ease;
 }
 
 .Botoes {
@@ -75,4 +93,11 @@ body {
 }
 .Botoes i {
   font-size: 1.5rem;
+}
+
+/*Responsividade*/
+@media screen and (max-width: 768px) {
+  .Card {
+    width: 90%;
+  }
 }/*# sourceMappingURL=style.css.map */

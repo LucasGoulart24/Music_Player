@@ -3,6 +3,8 @@ let tituloMusic = document.getElementById('titulo');
 let autorMusic = document.getElementById('autor');
 let audio = document.getElementById('audio');
 let playPauseBtn = document.getElementById('playPauseBtn');
+let progressBar = document.getElementById('progressBar');
+let progressFill = document.getElementById('progressFill');
 
 const Musics = [
     {
@@ -32,14 +34,15 @@ function loadMusic(index) {
 
 // Função para tocar e pausar a musica
 function PlayerMusic() {
+    let icon = document.getElementById('playPauseIcon')
     if(audio.paused) {
         audio.play();
-        playPauseBtn.classList.remove('bxs-right-arrow');
-        playPauseBtn.classList.add('bx-pause');
+        icon.classList.remove('bxs-right-arrow');
+        icon.classList.add('bx-pause');
     }else {
-        audio.paused();
-        playPauseBtn.classList.remove('bx-pause');
-        playPauseBtn.classLista.add('bxs-right-arrow');
+        audio.pause();
+        icon.classList.remove('bx-pause');
+        icon.classList.add('bxs-right-arrow');
     }
 }
 
@@ -48,8 +51,9 @@ function nextMusic() {
     index = (index + 1) % Musics.length;
     loadMusic(index);
     audio.play();
-    playPauseBtn.classList.remove('bxs-right-arrow');
-    playPauseBtn.classList.add('bx-pause');
+    let icon = document.getElementById('playPauseIcon');
+    icon.classList.remove('bxs-right-arrow');
+    icon.classList.add('bx-pause');
 }
 
 // Musica anterior
@@ -57,11 +61,28 @@ function backMusic() {
     index = (index - 1 + Musics.length) % Musics.length;
     loadMusic(index);
     audio.play();
-    playPauseBtn.classList.remove('bxs-right-arrow');
-    playPauseBtn.classList.add('bx-pause');
+    let icon = document.getElementById('playPauseIcon');
+    icon.classList.remove('bxs-right-arrow');
+    icon.classList.add('bx-pause');
 }
 
 // Carregar a primeira Musica ao abrir a página
 window.onload = () => {
     loadMusic(index);
 }
+
+// Atualiza a barrinha enquando a musica toca
+audio.addEventListener('timeupdate', () => {
+    const percent = (audio.currentTime / audio.duration) * 100;
+    progressFill.style.width = `${percent}%`;
+});
+
+// Permite clicar na barrinha para pular a música
+progressBar.addEventListener('click', (e) => {
+    const width = progressBar.clientWidth;
+    const clickX = e.offsetX;
+    const duration = audio.duration;
+    if(!isNaN(duration)) {
+        audio.currentTime = (clickX / width) * duration;
+    }
+});
